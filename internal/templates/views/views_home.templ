@@ -90,6 +90,8 @@ templ Home(viewData common.ViewData, secret string) {
 				@kioskData(map[string]any{
 					"debug":              viewData.Kiosk.Debug,
 					"debugVerbose":       viewData.Kiosk.DebugVerbose,
+					"clientLogging":      viewData.Kiosk.ClientLogging,
+					"deviceID":           viewData.DeviceID,
 					"langCode":           viewData.SystemLang,
 					"version":            viewData.KioskVersion,
 					"params":             queriesToJson(viewData.Queries),

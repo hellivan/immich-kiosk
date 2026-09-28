@@ -176,3 +176,4 @@ kiosk:
   cache: true # cache select api calls
   prefetch: true # fetch assets in the background
   asset_weighting: true # use weighting when picking assets
+  client_logging: false # collect client-side console output/errors and log them to stdout on the server. Useful for debugging devices without devtools access (e.g. Nest Hub)

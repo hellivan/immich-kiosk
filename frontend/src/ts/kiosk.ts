@@ -9,6 +9,7 @@ import {
     toggleFullscreen,
 } from "./fullscreen";
 import fullyKiosk from "./fullykiosk";
+import { initClientLogger } from "./client-logger";
 import { livePhoto } from "./live-photo";
 import {
     disableAssetNavigationButtons,
@@ -59,6 +60,8 @@ enum customKeyboardActions {
 type KioskData = {
     debug: boolean;
     debugVerbose: boolean;
+    clientLogging: boolean;
+    deviceID: string;
     version: string;
     langCode: string;
     params: Record<string, unknown>;
@@ -93,6 +96,11 @@ const timeouts: Record<string, number> = {};
 const kioskData: KioskData = JSON.parse(
     document.getElementById("kiosk-data")?.textContent || "{}",
 );
+
+// Initialize the client-side log aggregator/error collector as early as
+// possible so it can capture errors thrown during the rest of init().
+// This is a no-op unless client logging is enabled server-side.
+initClientLogger(kioskData.clientLogging, kioskData.deviceID);
 
 // Set polling interval based on the duration rate in kiosk data
 const pollInterval = htmx.parseInterval(`${kioskData.duration}s`);

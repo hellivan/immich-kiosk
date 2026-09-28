@@ -144,6 +144,11 @@ type KioskSettings struct {
 	Debug        bool `json:"debug" yaml:"debug" mapstructure:"debug" default:"false"`
 	DebugVerbose bool `json:"debugVerbose" yaml:"debug_verbose" mapstructure:"debug_verbose" default:"false"`
 
+	// ClientLogging enables collection of client-side console output and errors,
+	// which are sent to the server and written to stdout. Useful for debugging
+	// devices (e.g. Nest Hub, kiosk browsers) that don't expose devtools.
+	ClientLogging bool `json:"clientLogging" yaml:"client_logging" mapstructure:"client_logging" default:"false"`
+
 	DemoMode bool `json:"-" yaml:"-" mapstructure:"demo_mode" default:"false"`
 }
 

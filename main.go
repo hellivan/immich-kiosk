@@ -222,6 +222,10 @@ func main() {
 
 	e.POST("/webhooks", routes.Webhooks(baseConfig, c), middleware.RateLimiter(middleware.NewRateLimiterMemoryStore(float64(rate.Limit(20)))))
 
+	if baseConfig.Kiosk.ClientLogging {
+		e.POST("/client-logs", routes.ClientLogs(baseConfig), middleware.RateLimiter(middleware.NewRateLimiterMemoryStore(float64(rate.Limit(100)))))
+	}
+
 	e.GET("/live/:liveID", routes.LivePhoto(baseConfig.Kiosk.DemoMode, baseConfig.Kiosk.Password))
 
 	e.GET("/video/:videoID", routes.NewVideo(baseConfig.Kiosk.DemoMode), AssetCacheMiddlewareWithConfig(baseConfig))

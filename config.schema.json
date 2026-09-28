@@ -591,6 +591,11 @@
         "debug_verbose": {
           "type": "boolean"
         },
+        "client_logging": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enables collecting client-side console output and errors, which are sent to the server and written to stdout. Useful for debugging devices that don't expose devtools."
+        },
         "config_validation_level": {
           "type": "string",
           "enum": ["warning", "error", "off"],
