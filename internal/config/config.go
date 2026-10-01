@@ -299,6 +299,13 @@ type Config struct {
 	Duration int `json:"duration" yaml:"duration" mapstructure:"duration" query:"duration" form:"duration" default:"60"`
 	// DisableScreensaver asks browser to disable screensaver
 	DisableScreensaver bool `json:"disableScreensaver" yaml:"disable_screensaver" mapstructure:"disable_screensaver" query:"disable_screensaver" form:"disable_screensaver" default:"false"`
+	// CastFix enables a keep-alive fix (similar to the "ha-catt-fix" project for Home Assistant) for
+	// when Kiosk is cast directly to a Chromecast device (e.g. a Google Nest Hub) using catt/DashCast.
+	// Without it, the cast session is silently closed after ~10 minutes of no media playback.
+	CastFix bool `json:"castFix" yaml:"cast_fix" mapstructure:"cast_fix" query:"cast_fix" form:"cast_fix" default:"false"`
+	// CastFixDummyImageURL is the (tiny, publicly reachable) image URL loaded periodically to keep
+	// the Cast session alive when CastFix is enabled. Only used while running inside a Cast receiver.
+	CastFixDummyImageURL string `json:"castFixDummyImageUrl" yaml:"cast_fix_dummy_image_url" mapstructure:"cast_fix_dummy_image_url" query:"cast_fix_dummy_image_url" form:"cast_fix_dummy_image_url" default:"https://cast.home-assistant.io/images/google-nest-hub.png"`
 
 	// SelectedUser selected user from User for the specific request
 	SelectedUser string `json:"selectedUser" yaml:"-" default:""`

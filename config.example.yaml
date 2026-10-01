@@ -15,6 +15,8 @@ clock_source: client
 ## Kiosk behaviour
 duration: 60 # The duration a slide will be displayed (seconds).
 disable_screensaver: false # Ask the browser to request a lock that prevents device screens from dimming or locking.
+cast_fix: false # Keep the Cast session alive when Kiosk is cast directly to a Chromecast device (e.g. Google Nest Hub) with catt/DashCast, preventing the ~10 minute idle disconnect.
+cast_fix_dummy_image_url: https://cast.home-assistant.io/images/google-nest-hub.png # Image periodically loaded to keep the Cast session alive when cast_fix is enabled.
 optimize_images: false # Whether Kiosk should resize images to match your browser screen dimensions for better performance.
 use_gpu: true # Enable GPU acceleration for improved performance.
 burn_in_interval: 0 # The interval between burn-in protection cycles (minutes, 0 = disabled).

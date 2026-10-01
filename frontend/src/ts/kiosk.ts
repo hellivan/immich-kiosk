@@ -9,6 +9,7 @@ import {
     toggleFullscreen,
 } from "./fullscreen";
 import fullyKiosk from "./fullykiosk";
+import { initCastFix } from "./cast-fix";
 import { initClientLogger } from "./client-logger";
 import { livePhoto } from "./live-photo";
 import {
@@ -68,6 +69,8 @@ type KioskData = {
     duration: number;
     disableNavigation: boolean;
     disableScreensaver: boolean;
+    castFix: boolean;
+    castFixDummyImageUrl: string;
     showDate: boolean;
     dateFormat: string;
     showTime: boolean;
@@ -191,6 +194,10 @@ async function init(): Promise<void> {
 
     if (kioskData.disableScreensaver) {
         await preventSleep();
+    }
+
+    if (kioskData.castFix) {
+        initCastFix(kioskData.castFixDummyImageUrl);
     }
 
     if ("serviceWorker" in navigator) {

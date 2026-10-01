@@ -46,6 +46,12 @@
     "disable_screensaver": {
       "type": "boolean"
     },
+    "cast_fix": {
+      "type": "boolean"
+    },
+    "cast_fix_dummy_image_url": {
+      "type": "string"
+    },
     "optimize_images": {
       "type": "boolean"
     },
